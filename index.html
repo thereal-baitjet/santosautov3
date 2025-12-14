@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO -->
+    <title>Santos Automation | Top AI Developers & Tech Incubator in Union City, NJ</title>
+    <meta name="description" content="Union City's premier software development and AI integration agency. Located in the heart of Hudson County, we specialize in custom app development, AI solutions, and turning local startup ideas into venture-ready products. Serving Weehawken, Jersey City, Hoboken, and the entire Gold Coast." />
+    <meta name="keywords" content="Union City App Developer, Union City AI Specialist, Hudson County Software Engineer, Custom Software NJ, Tech Incubator Union City, Startup Accelerator NJ, AI Integration Services, React Developer Union City, Mobile App Development Hudson County, Santos Automation, Silicon Gold Coast, Weehawken Tech, Bayonne Software, West New York Coding, Secaucus IT Solutions, North Bergen Web Design, Local Developer NJ" />
+    <meta name="author" content="Santos Automation" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://santosautomation.com" />
+
+    <!-- Geo-Targeting for Local SEO (Union City/Hudson County) -->
+    <meta name="geo.region" content="US-NJ" />
+    <meta name="geo.placename" content="Union City" />
+    <meta name="geo.position" content="40.7795;-74.0324" />
+    <meta name="ICBM" content="40.7795, -74.0324" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="business.business" />
+    <meta property="og:url" content="https://santosautomation.com" />
+    <meta property="og:title" content="Santos Automation | AI & Software Development in Union City, NJ" />
+    <meta property="og:description" content="Turn your app idea into reality with Union City's top local developers. We specialize in AI integration, full-stack development, and startup consulting for the Gold Coast community." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1518129066606-44439c6560da?q=80&w=1200&auto=format&fit=crop" />
+    <meta property="business:contact_data:region" content="New Jersey" />
+    <meta property="business:contact_data:country_name" content="USA" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://santosautomation.com" />
+    <meta property="twitter:title" content="Santos Automation | Union City's Tech Hub" />
+    <meta property="twitter:description" content="Leading the tech revolution in Union City, Jersey City, and beyond. Expert AI & App Development." />
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1518129066606-44439c6560da?q=80&w=1200&auto=format&fit=crop" />
+
+    <!-- Structured Data (JSON-LD) for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Santos Automation",
+      "image": "https://images.unsplash.com/photo-1518129066606-44439c6560da",
+      "@id": "https://santosautomation.com",
+      "url": "https://santosautomation.com",
+      "telephone": "",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Union City",
+        "addressRegion": "NJ",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7795,
+        "longitude": -74.0324
+      },
+      "areaServed": [
+        "Union City",
+        "Hudson County",
+        "Jersey City",
+        "Hoboken",
+        "Weehawken",
+        "West New York",
+        "Guttenberg",
+        "Secaucus",
+        "North Bergen"
+      ],
+      "description": "Union City's premier tech incubator and AI consultancy providing custom software development and enterprise AI integration.",
+      "priceRange": "$$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@200;300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                100: '#F9F1D8',
+                200: '#F0DEAA',
+                400: '#D4AF37', // Classic Metallic Gold
+                500: '#C5A028',
+                600: '#B08D26',
+              },
+              hudson: {
+                dark: '#0B1120', // Deep Navy/Black
+                slate: '#1E293B',
+              }
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['"Inter"', 'sans-serif'],
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .parallax-bg {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Perspective for potential 3D expansion later */
+        perspective: 1px;
+      }
+      
+      /* Disable fixed background on mobile to prevent jitter and render issues */
+      @media (max-width: 768px) {
+        .parallax-bg {
+          background-attachment: scroll;
+        }
+      }
+
+      /* Smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Custom scrollbar for webkit */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0B1120; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #D4AF37; 
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "vite": "https://esm.sh/vite@^7.2.7",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-hudson-dark text-white antialiased selection:bg-gold-500 selection:text-hudson-dark">
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
