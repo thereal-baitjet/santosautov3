@@ -1,8 +1,30 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { AiAnalysisResponse } from "../types";
 
-const apiKey = process.env.API_KEY;
+// Prefer Vite env (client) and fall back to process.env for server/CI
+const apiKey = import.meta.env.VITE_API_KEY || process.env.API_KEY;
 const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
+
+const parseAiResponse = (raw: string): AiAnalysisResponse => {
+  // Strip common code fences
+  const cleaned = raw
+    .trim()
+    .replace(/^```(?:json)?/i, "")
+    .replace(/```$/, "")
+    .trim();
+
+  try {
+    return JSON.parse(cleaned) as AiAnalysisResponse;
+  } catch {
+    // Try to recover JSON object if wrapped with extra text
+    const start = cleaned.indexOf("{");
+    const end = cleaned.lastIndexOf("}");
+    if (start !== -1 && end !== -1 && end > start) {
+      return JSON.parse(cleaned.slice(start, end + 1)) as AiAnalysisResponse;
+    }
+    throw new Error("Unable to parse AI response");
+  }
+};
 
 export const evaluateAppIdea = async (idea: string): Promise<AiAnalysisResponse> => {
   if (!genAI) {
@@ -26,7 +48,7 @@ export const evaluateAppIdea = async (idea: string): Promise<AiAnalysisResponse>
 
     if (!text) throw new Error("No response from AI");
 
-    return JSON.parse(text) as AiAnalysisResponse;
+    return parseAiResponse(text);
   } catch (error) {
     console.error("AI Evaluation failed:", error);
     throw new Error("Failed to evaluate idea.");
