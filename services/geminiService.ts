@@ -1,9 +1,9 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 import { AiAnalysisResponse } from "../types";
 
 // Prefer Vite env (client) and fall back to process.env for server/CI
 const apiKey = import.meta.env?.VITE_API_KEY || process.env.API_KEY;
-const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
+const genAI = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const parseAiResponse = (raw: string): AiAnalysisResponse => {
   // Strip common code fences
@@ -44,7 +44,10 @@ export const evaluateAppIdea = async (idea: string): Promise<AiAnalysisResponse>
 
   try {
     const result = await model.generateContent(prompt);
-    const text = result.response.text();
+    const text =
+      typeof result.response.text === "function"
+        ? result.response.text()
+        : result.response.text;
 
     if (!text) throw new Error("No response from AI");
 
