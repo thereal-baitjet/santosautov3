@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { AiAnalysisResponse } from "../types";
 
 // Prefer Vite env (client) and fall back to process.env for server/CI
-const apiKey = import.meta.env.VITE_API_KEY || process.env.API_KEY;
+const apiKey = import.meta.env?.VITE_API_KEY || process.env.API_KEY;
 const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 
 const parseAiResponse = (raw: string): AiAnalysisResponse => {
