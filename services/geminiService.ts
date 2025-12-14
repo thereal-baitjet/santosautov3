@@ -1,11 +1,16 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { AiAnalysisResponse } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = process.env.API_KEY;
+const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 
 export const evaluateAppIdea = async (idea: string): Promise<AiAnalysisResponse> => {
-  const model = "gemini-2.5-flash";
-  
+  if (!genAI) {
+    throw new Error("Missing API key for AI evaluation.");
+  }
+
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
   const prompt = `
     You are a venture capitalist and senior tech architect based in Union City, NJ (Hudson County area).
     Analyze the following app idea or business integration request.
@@ -16,26 +21,11 @@ export const evaluateAppIdea = async (idea: string): Promise<AiAnalysisResponse>
   `;
 
   try {
-    const response = await ai.models.generateContent({
-      model,
-      contents: prompt,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            score: { type: Type.NUMBER },
-            summary: { type: Type.STRING },
-            recommendation: { type: Type.STRING }
-          },
-          required: ["score", "summary", "recommendation"]
-        }
-      }
-    });
+    const result = await model.generateContent(prompt);
+    const text = result.response.text();
 
-    const text = response.text;
     if (!text) throw new Error("No response from AI");
-    
+
     return JSON.parse(text) as AiAnalysisResponse;
   } catch (error) {
     console.error("AI Evaluation failed:", error);
